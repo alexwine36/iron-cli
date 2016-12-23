@@ -9,7 +9,7 @@ creates project structure, files and boilerplate code.
 Install the iron command line tool globally so you can use it from any project directory.
 
 ```sh
-$ npm install -g iron-meteor
+$ npm install -g git+https://github.com/alexwine36/iron-cli.git
 ```
 
 **This replaces the `em` command line tool.**
@@ -145,7 +145,7 @@ $ cd app/
 $ meteor mongo
 ```
 
-**NOTE** 
+**NOTE**
 
 *Ideally running `iron mongo` in the project directory should work but it doesn't for some reason and is being tracked in issue #136*
 
