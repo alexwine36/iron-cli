@@ -1,6 +1,26 @@
 <template name="<%= name %>">
   <div class="<%= className %>">
     <h1>Find me in <%= myPath %></h1>
-    {{> quickForm collection="<%= name %>" id="insert<%= singularName %>Form" type="insert"}}
+    <button class="add-<%= className %>">Add <%= name %></button>
+    {{#if add<%= singularName %>}}
+    {{> Add<%= singularName %>}}
+    {{else}}
+    {{#each <%= returnName %>}}
+    {{> <%= singularName %>}}
+    {{/each}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="Add<%= singularName %>">
+  {{> quickForm collection="<%= name %>" id="insert<%= singularName %>Form" type="insert"}}
+</template>
+
+<template name="<%= singularName %>">
+  <div>
+    {{title}}
+    <br>
+    {{createdAt}}
+    <br>
   </div>
 </template>
