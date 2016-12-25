@@ -9,8 +9,7 @@
       <tr>
         <th>Title</th>
         <th>Created At</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Functions</th>
       </tr>
       {{#each <%= returnName %>}}
 
@@ -27,18 +26,22 @@
 </template>
 
 <template name="Edit<%= singularName %>">
-  {{> quickForm collection="<%= name %>" id="update<%= singularName %>Form" doc=this type="update"}}
+  {{# autoForm collection="<%= name %>" id="update<%= singularName %>Form" doc=this type="update"}}
+  <td>{{> afQuickField name='title'}}</td>
+  <td>{{createdAt}}</td>
+  <td><button class="edit-<%= className %>">Cancel <%= singularName %></button><button type="submit" class="">Submit</button></td>
+
 </template>
 
 <template name="<%= singularName %>">
-  {{#if edit<%= singularName %>}}
-  {{> Edit<%= singularName %>}}
-  {{else}}
   <tr>
+    {{#if edit<%= singularName %>}}
+    {{> Edit<%= singularName %>}}
+    {{else}}
     <td>{{title}}</td>
     <td>{{createdAt}}</td>
-    <td><button class="edit-<%= className %>">Edit <%= singularName %></button></td>
-    <td><button class="delete-<%= className %>">Delete <%= singularName %></button></td>
+    <td><button class="edit-<%= className %>">Edit <%= singularName %></button><button class="delete-<%= className %>">Delete <%= singularName %></button></td>
+    {{/if}}
   </tr>
-  {{/if}}
+
 </template>
