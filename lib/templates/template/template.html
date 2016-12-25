@@ -16,11 +16,22 @@
   {{> quickForm collection="<%= name %>" id="insert<%= singularName %>Form" type="insert"}}
 </template>
 
+<template name="Edit<%= singularName %>">
+  {{> quickForm collection="<%= name %>" id="update<%= singularName %>Form" doc=this type="update"}}
+</template>
+
 <template name="<%= singularName %>">
   <div>
+    {{#if edit<%= singularName %>}}
+    {{> Edit<%= singularName %>}}
+    {{else}}
+    <br>
     {{title}}
     <br>
     {{createdAt}}
+    <br>
+    {{/if}}
+    <button class="edit-<%= className %>">Edit <%= singularName %></button>
     <br>
   </div>
 </template>
