@@ -5,9 +5,19 @@
     {{#if add<%= singularName %>}}
     {{> Add<%= singularName %>}}
     {{else}}
-    {{#each <%= returnName %>}}
-    {{> <%= singularName %>}}
-    {{/each}}
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Created At</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      {{#each <%= returnName %>}}
+
+
+      {{> <%= singularName %>}}
+      {{/each}}
+    </table>
     {{/if}}
   </div>
 </template>
@@ -21,17 +31,14 @@
 </template>
 
 <template name="<%= singularName %>">
-  <div>
-    {{#if edit<%= singularName %>}}
-    {{> Edit<%= singularName %>}}
-    {{else}}
-    <br>
-    {{title}}
-    <br>
-    {{createdAt}}
-    <br>
-    {{/if}}
-    <button class="edit-<%= className %>">Edit <%= singularName %></button>
-    <br>
-  </div>
+  {{#if edit<%= singularName %>}}
+  {{> Edit<%= singularName %>}}
+  {{else}}
+  <tr>
+    <td>{{title}}</td>
+    <td>{{createdAt}}</td>
+    <td><button class="edit-<%= className %>">Edit <%= singularName %></button></td>
+    <td><button class="delete-<%= className %>">Delete <%= singularName %></button></td>
+  </tr>
+  {{/if}}
 </template>
