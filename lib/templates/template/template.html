@@ -1,7 +1,7 @@
 <template name="<%= name %>">
   <div class="<%= className %>">
     <h1>Find me in <%= myPath %></h1>
-    <button class="add-<%= className %>">Add <%= name %></button>
+    <button class="add-<%= singularClassName %>">{{#if add<%= singularName %>}}Cancel{{else}}Add <%= name %>{{/if}}</button>
     {{#if add<%= singularName %>}}
     {{> Add<%= singularName %>}}
     {{else}}
@@ -26,11 +26,11 @@
 </template>
 
 <template name="Edit<%= singularName %>">
-  {{# autoForm collection="<%= name %>" id="update<%= singularName %>Form" doc=this type="update"}}
+  {{#autoForm collection="<%= name %>" id="update<%= singularName %>Form" doc=this type="update"}}
   <td>{{> afQuickField name='title'}}</td>
   <td>{{createdAt}}</td>
-  <td><button class="edit-<%= className %>">Cancel <%= singularName %></button><button type="submit" class="">Submit</button></td>
-
+  <td><button class="edit-<%= singularClassName %>">Cancel <%= singularName %></button><button type="submit" class="">Submit</button></td>
+  {{/autoForm}}
 </template>
 
 <template name="<%= singularName %>">
@@ -40,7 +40,7 @@
     {{else}}
     <td>{{title}}</td>
     <td>{{createdAt}}</td>
-    <td><button class="edit-<%= className %>">Edit <%= singularName %></button><button class="delete-<%= className %>">Delete <%= singularName %></button></td>
+    <td><button class="edit-<%= singularClassName %>">Edit <%= singularName %></button><button class="delete-<%= singularClassName %>">Delete <%= singularName %></button></td>
     {{/if}}
   </tr>
 
